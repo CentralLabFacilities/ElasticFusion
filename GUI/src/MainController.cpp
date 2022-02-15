@@ -172,7 +172,7 @@ void MainController::loadCameraConfig(const std::string & filename)
 
     int n = sscanf(line.c_str(), "%lg %lg %lg %lg %lg %lg", &w, &h, &fx, &fy, &cx, &cy);
 
-    assert(n == 4 && "Ooops, your camera config file should contain a single line with w h fx fy cx cy!");
+    assert(n == 6 && "Ooops, your camera config file should contain a single line with w h fx fy cx cy!");
 
     Resolution::getInstance(w, h);
     Intrinsics::getInstance(fx, fy, cx, cy);
