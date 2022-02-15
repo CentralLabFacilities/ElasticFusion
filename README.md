@@ -83,7 +83,7 @@ There are three subprojects in the repo:
 
 The GUI (*ElasticFusion*) can take a bunch of parameters when launching it from the command line. They are as follows:
 
-* *-cal <calibration>* : Loads a camera calibration file specified as *fx fy cx cy*.
+* *-cam <cameraConfig>* : Loads a camera config file specified as *w h fx fy cx cy*.
 * *-l <logfile>* : Processes the specified .klg log file.
 * *-p <poses>* : Loads ground truth poses to use instead of estimated pose.
 * *-c <confidence>* : Surfel confidence threshold (default *10*).

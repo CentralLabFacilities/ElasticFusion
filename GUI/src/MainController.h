@@ -38,7 +38,7 @@ class MainController
     private:
         void run();
 
-        void loadCalibration(const std::string & filename);
+        void loadCameraConfig(const std::string & filename);
 
         bool good;
         ElasticFusion * eFusion;

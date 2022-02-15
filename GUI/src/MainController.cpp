@@ -32,18 +32,17 @@ MainController::MainController(int argc, char * argv[])
     std::string empty;
     iclnuim = Parse::get().arg(argc, argv, "-icl", empty) > -1;
 
-    std::string calibrationFile;
-    Parse::get().arg(argc, argv, "-cal", calibrationFile);
+    std::string cameraConfigFile;
+    Parse::get().arg(argc, argv, "-cam", cameraConfigFile);
 
-    Resolution::getInstance(640, 480);
-
-    if(calibrationFile.length())
+    if(cameraConfigFile.length())
     {
-        loadCalibration(calibrationFile);
+        loadCameraConfig(cameraConfigFile);
     }
     else
     {
-        Intrinsics::getInstance(528, 528, 320, 240);
+        Intrinsics::getInstance(899, 899, 648, 367);
+        Resolution::getInstance(1280, 720);
     }
 
     Parse::get().arg(argc, argv, "-l", logFile);
@@ -160,21 +159,22 @@ MainController::~MainController()
     }
 }
 
-void MainController::loadCalibration(const std::string & filename)
+void MainController::loadCameraConfig(const std::string & filename)
 {
     std::ifstream file(filename);
     std::string line;
 
     assert(!file.eof());
 
-    double fx, fy, cx, cy;
+    double w, h, fx, fy, cx, cy;
 
     std::getline(file, line);
 
-    int n = sscanf(line.c_str(), "%lg %lg %lg %lg", &fx, &fy, &cx, &cy);
+    int n = sscanf(line.c_str(), "%lg %lg %lg %lg %lg %lg", &w, &h, &fx, &fy, &cx, &cy);
 
-    assert(n == 4 && "Ooops, your calibration file should contain a single line with fx fy cx cy!");
+    assert(n == 4 && "Ooops, your camera config file should contain a single line with w h fx fy cx cy!");
 
+    Resolution::getInstance(w, h);
     Intrinsics::getInstance(fx, fy, cx, cy);
 }
 
