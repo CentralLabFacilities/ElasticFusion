@@ -119,6 +119,11 @@ class GPUConfig
             rgbStepMap["GeForce GTX 980 Ti"] = std::pair<int, int>(128, 96);
             rgbResMap["GeForce GTX 980 Ti"] = std::pair<int, int>(224, 384);
             so3StepMap["GeForce GTX 980 Ti"] = std::pair<int, int>(432, 48);
+               
+            icpStepMap["NVIDIA GeForce GTX 1060 6GB"] = std::pair<int, int>(128, 80);
+            rgbStepMap["NVIDIA GeForce GTX 1060 6GB"] = std::pair<int, int>(128, 48);
+            rgbResMap["NVIDIA GeForce GTX 1060 6GB"] = std::pair<int, int>(128, 432);
+            so3StepMap["NVIDIA GeForce GTX 1060 6GB"] = std::pair<int, int>(64, 80);
 
             icpStepMap["GeForce GTX 1070"] = std::pair<int, int>(64, 240);
             rgbStepMap["GeForce GTX 1070"] = std::pair<int, int>(128, 96);
